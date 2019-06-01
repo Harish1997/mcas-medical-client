@@ -1,0 +1,60 @@
+ <div class="card mcas-card unattended" *ngFor="let patient of patientsJsonArray | async" [ngStyle]="{'border-color':patient.status==='unattended'?'#e4002b':'#ffffff'}">
+                                <div class="card-block">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="d-flex flex-wrap">
+                                                <div>
+                                                    <h3 class="card-title">{{patient.name}}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">
+                                          <div class="d-flex flex-wrap">
+                                            <img src={{patient.profilepic}} alt="Avatar" style="width:200px; height:200px; border-radius: 50%;">
+                                          </div>
+                                        </div>
+                                        <div class="col-5">
+                                              <div class="row">
+                                                <div class="col-6">
+                                                    <p><span class="victim-card-title">Blood Group : </span><span>{{patient.bloodGroup}}</span></p>
+                                                    <p><span class="victim-card-title">Age : </span><span>{{patient.age}}</span></p>
+                                                    <p><span class="victim-card-title">Location : </span>{{patient.location}}<span></span></p>
+                                                    <p><span class="victim-card-title">Severity : </span><span>{{patient.severity}}</span></p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <a class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded" style="color: #fff;">Medical History</a>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <div class="col-12">
+                                                  <div class="d-flex flex-wrap" style="align-items: center; justify-content: center;">
+                                                    <p style="font-size: 30px"><span class="victim-card-title">Status : </span><span>{{patient.status}}</span></p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                        <div class="col-4" style="background: #eaeaea">
+                                            <div class="d-flex flex-wrap">
+                                              <div id="map" style="width: 500px; height: 220px"></div>
+                                              <script>
+                                                    // Initialize and add the map
+                                                    function initMap() {
+                                                      // The location of Uluru
+                                                      var location = {lat: 13.0280354, lng: 80.2257379};
+                                                      // The map, centered at Uluru
+                                                      var map = new google.maps.Map(
+                                                          document.getElementById('map'), {zoom: 4, center: location});
+                                                      // The marker, positioned at Uluru
+                                                      var marker = new google.maps.Marker({position: location, map: map});
+                                                    }
+                                              </script>
+
+                                              <script async defer
+                                              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-kn8yTUfw-AcmigTywid-WrO2ZQBHPs&callback=initMap">
+                                              </script>
+                                            </div>
+                                        </div>
+                                    </div>
+</div>
